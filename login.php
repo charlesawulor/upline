@@ -37,14 +37,13 @@ $num_row = mysqli_num_rows($result);
 //if there is a user with collected details
 if($num_row ==1)
 {
-/*This where the work begins*/
-//firstly lets get already stored password from database
+//firstly get already stored password from database
 $getdata=mysqli_fetch_assoc($result);
 $hashed_password = $getdata['password'];
-//verify if current password and stored password are the same
+//check if entered password and stored password are the same
 if ( password_verify ( $password , $hashed_password ))
 {
-/* future proof the password */
+/* double check the password */
 if( password_needs_rehash($hashed_password , PASSWORD_DEFAULT))
 {
 /* recreate the hash */
